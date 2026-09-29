@@ -87,7 +87,7 @@ export default function IncomePage() {
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
               <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <YAxis tick={{ fontSize: 11, fill: '#94a3b8' }} />
-              <Tooltip formatter={(v: number) => formatCurrency(v)} />
+              <Tooltip formatter={(v: any) => formatCurrency(v)} />
               <Bar dataKey="amount" fill="#22c55e" radius={[4, 4, 0, 0]} name="Ingresos" />
             </BarChart>
           </ResponsiveContainer>

@@ -13,7 +13,7 @@ export default function TransactionsPage() {
   const [filterCategory, setFilterCategory] = useState('all');
   const [filterMethod, setFilterMethod] = useState('all');
   const [filterNecessary, setFilterNecessary] = useState('all');
-  const [filterMonth, setFilterMonth] = useState('all');
+  const [filterMonth, _setFilterMonth] = useState('all');
   const [showFilters, setShowFilters] = useState(false);
   const [editTx, setEditTx] = useState<Transaction | undefined>();
   const [showModal, setShowModal] = useState(false);

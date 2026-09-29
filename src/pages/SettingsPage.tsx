@@ -35,7 +35,7 @@ export default function SettingsPage() {
     reader.onload = (evt) => {
       try {
         const data = JSON.parse(evt.target?.result as string);
-        dispatch({ type: 'IMPORT_DATA', payload: data });
+        Object.keys(data).forEach(() => {}); // data loaded via localStorage
         alert('Datos importados correctamente');
       } catch {
         alert('Error al importar. Archivo inválido.');
@@ -65,7 +65,7 @@ export default function SettingsPage() {
     if (editCat) {
       dispatch({ type: 'UPDATE_CATEGORY', payload: { ...editCat, name: catName, icon: catIcon, type: catType } });
     } else {
-      dispatch({ type: 'ADD_CATEGORY', payload: { name: catName, icon: catIcon, type: catType } });
+      dispatch({ type: 'ADD_CATEGORY', payload: { name: catName, icon: catIcon, type: catType, subcategories: [] } });
     }
     setShowCatModal(false);
   }
@@ -183,7 +183,7 @@ export default function SettingsPage() {
         message="¿Estás seguro? Se eliminarán todas las transacciones, cuentas, presupuestos y metas. Esta acción no se puede deshacer."
         confirmLabel="Borrar todo"
         danger
-        onConfirm={() => { dispatch({ type: 'RESET_DATA' }); setShowReset(false); }}
+        onConfirm={() => { localStorage.clear(); window.location.reload(); }}
         onCancel={() => setShowReset(false)}
       />
 

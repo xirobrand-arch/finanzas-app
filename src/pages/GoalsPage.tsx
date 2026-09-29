@@ -4,7 +4,7 @@ import { useFinance } from '../store/FinanceContext';
 import { formatCurrency } from '../utils/format';
 import Modal from '../components/common/Modal';
 import ConfirmDialog from '../components/common/ConfirmDialog';
-import type { SavingsGoal } from '../types';
+import type { FinancialGoal } from '../types';
 
 const goalIcons = ['🎯', '🏠', '🚗', '✈️', '💻', '📱', '🎓', '💍', '🏥', '🎮', '📚', '🏋️', '🎸', '🏖️', '👶', '🐕'];
 const goalColors = ['#6366f1', '#22c55e', '#3b82f6', '#f59e0b', '#ef4444', '#ec4899', '#8b5cf6', '#14b8a6'];
@@ -12,7 +12,7 @@ const goalColors = ['#6366f1', '#22c55e', '#3b82f6', '#f59e0b', '#ef4444', '#ec4
 export default function GoalsPage() {
   const { state, dispatch } = useFinance();
   const [showModal, setShowModal] = useState(false);
-  const [editGoal, setEditGoal] = useState<SavingsGoal | null>(null);
+  const [editGoal, setEditGoal] = useState<FinancialGoal | null>(null);
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [name, setName] = useState('');
   const [targetAmount, setTargetAmount] = useState('');
@@ -21,12 +21,12 @@ export default function GoalsPage() {
   const [icon, setIcon] = useState('🎯');
   const [color, setColor] = useState(goalColors[0]);
 
-  function openEdit(goal: SavingsGoal) {
+  function openEdit(goal: FinancialGoal) {
     setEditGoal(goal);
     setName(goal.name);
     setTargetAmount(String(goal.targetAmount));
     setCurrentAmount(String(goal.currentAmount));
-    setDeadline(goal.deadline);
+    setDeadline(goal.deadline || '');
     setIcon(goal.icon);
     setColor(goal.color);
     setShowModal(true);

@@ -79,10 +79,10 @@ export default function ChartsPage() {
           {expensesByCat.length > 0 ? (
             <ResponsiveContainer width="100%" height={280}>
               <PieChart>
-                <Pie data={expensesByCat} dataKey="amount" nameKey="name" cx="50%" cy="50%" outerRadius={100} innerRadius={60} label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`} labelLine={false} fontSize={10}>
+                <Pie data={expensesByCat} dataKey="amount" nameKey="name" cx="50%" cy="50%" outerRadius={100} innerRadius={60} label={({ name, percent }: any) => `${name} ${((percent || 0) * 100).toFixed(0)}%`} labelLine={false} fontSize={10}>
                   {expensesByCat.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
                 </Pie>
-                <Tooltip formatter={(v: number) => formatCurrency(v)} />
+                <Tooltip formatter={(v: any) => formatCurrency(v)} />
               </PieChart>
             </ResponsiveContainer>
           ) : <p className="text-slate-400 text-sm text-center py-12">Sin datos</p>}
@@ -95,7 +95,7 @@ export default function ChartsPage() {
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
               <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <YAxis tick={{ fontSize: 11, fill: '#94a3b8' }} />
-              <Tooltip formatter={(v: number) => formatCurrency(v)} />
+              <Tooltip formatter={(v: any) => formatCurrency(v)} />
               <Legend />
               <Bar dataKey="ingresos" fill="#22c55e" radius={[4, 4, 0, 0]} />
               <Bar dataKey="gastos" fill="#ef4444" radius={[4, 4, 0, 0]} />
@@ -110,7 +110,7 @@ export default function ChartsPage() {
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
               <XAxis dataKey="day" tick={{ fontSize: 10, fill: '#94a3b8' }} />
               <YAxis tick={{ fontSize: 10, fill: '#94a3b8' }} />
-              <Tooltip formatter={(v: number) => formatCurrency(v)} />
+              <Tooltip formatter={(v: any) => formatCurrency(v)} />
               <Line type="monotone" dataKey="balance" stroke="#6366f1" strokeWidth={2} dot={false} name="Saldo" />
             </LineChart>
           </ResponsiveContainer>
@@ -123,7 +123,7 @@ export default function ChartsPage() {
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
               <XAxis dataKey="day" tick={{ fontSize: 10, fill: '#94a3b8' }} />
               <YAxis tick={{ fontSize: 10, fill: '#94a3b8' }} />
-              <Tooltip formatter={(v: number) => formatCurrency(v)} />
+              <Tooltip formatter={(v: any) => formatCurrency(v)} />
               <Line type="monotone" dataKey="amount" stroke="#ef4444" strokeWidth={2} dot={false} name="Gasto" />
             </LineChart>
           </ResponsiveContainer>
@@ -137,7 +137,7 @@ export default function ChartsPage() {
                 <Pie data={necessaryVsNot} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100} innerRadius={60}>
                   {necessaryVsNot.map((entry, i) => <Cell key={i} fill={entry.fill} />)}
                 </Pie>
-                <Tooltip formatter={(v: number) => formatCurrency(v)} />
+                <Tooltip formatter={(v: any) => formatCurrency(v)} />
                 <Legend />
               </PieChart>
             </ResponsiveContainer>
@@ -151,7 +151,7 @@ export default function ChartsPage() {
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
               <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <YAxis tick={{ fontSize: 11, fill: '#94a3b8' }} />
-              <Tooltip formatter={(v: number) => formatCurrency(v)} />
+              <Tooltip formatter={(v: any) => formatCurrency(v)} />
               <Bar dataKey="ahorro" fill="#6366f1" radius={[4, 4, 0, 0]} name="Ahorro" />
             </BarChart>
           </ResponsiveContainer>

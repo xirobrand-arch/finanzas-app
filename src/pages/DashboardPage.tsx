@@ -118,7 +118,7 @@ export default function DashboardPage() {
                       <Cell key={i} fill={COLORS[i % COLORS.length]} />
                     ))}
                   </Pie>
-                  <Tooltip formatter={(v: number) => formatCurrency(v)} />
+                  <Tooltip formatter={(v: any) => formatCurrency(v)} />
                 </PieChart>
               </ResponsiveContainer>
               <div className="text-xs space-y-1.5 min-w-[140px]">
@@ -144,7 +144,7 @@ export default function DashboardPage() {
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
               <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <YAxis tick={{ fontSize: 11, fill: '#94a3b8' }} />
-              <Tooltip formatter={(v: number) => formatCurrency(v)} />
+              <Tooltip formatter={(v: any) => formatCurrency(v)} />
               <Bar dataKey="ingresos" fill="#22c55e" radius={[4, 4, 0, 0]} />
               <Bar dataKey="gastos" fill="#ef4444" radius={[4, 4, 0, 0]} />
             </BarChart>
@@ -161,7 +161,7 @@ export default function DashboardPage() {
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
               <XAxis dataKey="day" tick={{ fontSize: 10, fill: '#94a3b8' }} />
               <YAxis tick={{ fontSize: 10, fill: '#94a3b8' }} />
-              <Tooltip formatter={(v: number) => formatCurrency(v)} />
+              <Tooltip formatter={(v: any) => formatCurrency(v)} />
               <Line type="monotone" dataKey="amount" stroke="#6366f1" strokeWidth={2} dot={false} />
             </LineChart>
           </ResponsiveContainer>
